@@ -35,9 +35,10 @@ llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key = os.getenv("GOOGLE-API
 
 
 llm_chain = LLMChain(prompt=demo_template, llm=llm)
-suggestion = llm_chain.run(user_input)
-# print(suggestion)
-# # re.findall("/d+.")
+if len(user_input) != 0:
+    suggestion = llm_chain.run(user_input)
+    # print(suggestion)
+    # print(re.findall(r"\d+\.\s+(.+)", suggestion))
 
-st.write(suggestion)
+    st.write(suggestion)
 
